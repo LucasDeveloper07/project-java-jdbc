@@ -2,6 +2,7 @@ package entities;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Seller implements Serializable {
     
@@ -14,6 +15,9 @@ public class Seller implements Serializable {
     private Double baseSalary;
 
     private Department department;
+
+    public Seller() {
+    }
 
     public Seller(Integer id, String name, String email, LocalDate birthDate, Double baseSalary, Department department) {
         this.id = id;
@@ -107,6 +111,8 @@ public class Seller implements Serializable {
             + id
             + "\nEmail: "
             + email
+            + "\nData Nascimento (dd/MM/yyyy): "
+            + DateTimeFormatter.ofPattern("dd/MM/yyyy").format(birthDate)
             + "\nSalario: R$"
             + String.format("%.2f", baseSalary);
     }
