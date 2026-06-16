@@ -69,8 +69,7 @@ public class SellerDaoJDBC implements SellerDao {
         try {
             st = conn.prepareStatement("UPDATE seller "
                 + "SET Name = ?, Email = ?, BirthDate = ?, BaseSalary = ?, DepartmentId = ? "
-                + "WHERE Id = ?",
-                Statement.RETURN_GENERATED_KEYS);
+                + "WHERE Id = ?");
 
             st.setString(1, seller.getName());
             st.setString(2, seller.getEmail());
@@ -79,7 +78,11 @@ public class SellerDaoJDBC implements SellerDao {
             st.setInt(5, seller.getDepartment().getId());
             st.setInt(6, seller.getId());
 
-            st.executeUpdate();
+            int rowsUpdate = st.executeUpdate();
+
+            if (rowsUpdate == 0) {
+                throw new DbException("Erro inesperado! Nenhuma linha foi atualizada.");
+            }
         } catch (SQLException e) {
             throw new DbException(e.getMessage());
         } finally {
@@ -100,7 +103,7 @@ public class SellerDaoJDBC implements SellerDao {
             int rowsUpdate = st.executeUpdate();
 
             if (rowsUpdate == 0) {
-                throw new DbException("ID inexistente!");
+                throw new DbException("Erro inesperado! ID inexistente.");
             }
         } catch (SQLException e) {
             throw new DbException(e.getMessage());
