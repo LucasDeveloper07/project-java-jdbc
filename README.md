@@ -1,18 +1,39 @@
-## Getting Started
+# Project Java JDBC
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Projeto desenvolvido para praticar e consolidar os conceitos de JDBC (Java Database Connectivity) com banco de dados MySQL.
 
-## Folder Structure
+---
 
-The workspace contains two folders by default, where:
+## Sobre o Projeto
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+Este projeto foi criado como estudo prático de JDBC em Java, aplicando o padrão DAO (Data Access Object) para separar a lógica de acesso ao banco de dados das regras de negócio.
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+---
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+## Tecnologias Utilizadas
 
-## Dependency Management
+- Java 17
+- JDBC
+- MySQL
+- VS Code
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+---
+
+## Banco de Dados
+
+O banco de dados possui duas tabelas principais:
+
+- department — armazena os departamentos
+- seller — armazena os vendedores, com chave estrangeira para department
+
+As configurações de conexão ficam no arquivo db.properties.
+
+---
+
+## Como Executar
+
+1. Clone o repositório git clone https://github.com/LucasDeveloper07/project-java-jdbc.git
+
+2. Configure o arquivo db.properties com suas credenciais do MySQL
+
+3. Execute o projeto pela classe ProgramTest ou ProgramTest2 dentro da pasta application
